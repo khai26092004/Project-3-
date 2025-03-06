@@ -1,0 +1,46 @@
+.stickytooltip{
+	box-shadow: 5px 5px 8px #818181; /*shadow for CSS3 capable browsers.*/
+	-webkit-box-shadow: 5px 5px 8px #818181;
+	-moz-box-shadow: 5px 5px 8px #818181;
+	display:none;
+	position:absolute;
+	display:none;
+	border: 1px solid #d00;
+	background: white;
+	z-index: 3000;
+	width: 300px;
+}
+
+.box_sticky{
+
+}
+.title_sticky{
+	background: none repeat scroll 0 0 #d00;
+	color: #FFFFFF;
+	padding: 6px 10px;
+}
+.content_sticky .price-old{}
+.content_sticky .price-old span{
+	text-decoration: line-through;
+}
+.content_sticky .price{}
+.content_sticky .price span{
+	font-weight: 600;
+	font-size: 15px;
+	color: #f8171f;
+}
+
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+	background:black;
+	color:white;
+	padding-top:5px;
+	text-align:center;
+	font:bold 11px Arial;
+}
+.content_sticky{
+	padding: 5px;
+}
+.atip img{
+	max-width: 300px;
+	max-height: 300px;
+}

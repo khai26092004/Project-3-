@@ -1,0 +1,295 @@
+#evaluate .wrap-evaluate {
+}
+
+.evaluate-detail {
+}
+.evaluate-detail h2.title {
+    font-size: 23px;
+    color: #383838;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 15px;
+    background: none;
+    border-bottom: 0px;
+    text-transform: uppercase;
+}
+.evaluate-detail .wrap-rating {
+    background-color: #fff;
+    border: 1px solid #e6e8ec;
+    border-radius: 8px;
+    padding: 25px;
+    padding-bottom: 15px;
+}
+.evaluate-detail .wrap-rating .number-rate {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.evaluate-detail .wrap-rating .number-rate .box-rate {
+    display: flex;
+    align-items: center;
+}
+.evaluate-detail .wrap-rating .number-rate .box-rate p {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.12;
+    color:#d00;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.evaluate-detail .wrap-rating .number-rate .box-rate .box-icon-rate {
+    display: flex;
+    align-items: center;
+}
+.evaluate-detail .wrap-rating .number-rate .box-rate .box-icon-rate i {
+    font-size: 28px;
+    color: #d00;
+    margin: 0 2px;
+}
+.evaluate-detail .wrap-rating .number-rate > p {
+    font-size: 16px;
+    color: #383838;
+    font-weight: 300;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+.evaluate-detail .wrap-rating .wrap-list-evalua {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.wrap-rating .wrap-list-evalua .evalua-display {
+    width: 70%;
+    min-width: 70%;
+}
+.wrap-rating .wrap-list-evalua .item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.wrap-rating .wrap-list-evalua .item > p {
+    min-width: 43px;
+    display: flex;
+    align-items: center;
+}
+
+
+.wrap-rating .wrap-list-evalua .item > p i {
+    margin-left: 5px;
+    margin-right: 10px;
+    color: #383838;
+}
+
+.wrap-rating .wrap-list-evalua .item .percent {
+    width: 100%;
+    max-width: 410px;
+    background: #e2e2e2;
+    border-radius: 8px;
+    height: 12px;
+    margin-right: 35px;
+}
+.wrap-rating .wrap-list-evalua .item .percent span {
+    display: block;
+    background: #d00;
+    border-radius: 8px;
+    height: 100%;
+    width: 0;
+}
+.wrap-rating .wrap-list-evalua .item .ratio-display {
+    min-width: max-content;
+    display: flex;
+    font-weight: 300;
+}
+
+.wrap-rating .wrap-list-evalua .button-rate {
+    width: 30%;
+    min-width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.wrap-rating .wrap-list-evalua .button-rate .btn {
+    max-width: 220px;
+    height: 60px;
+    width: 100%;
+    background-color: #d00;
+    color: white;
+}
+
+
+.wrap-comment-customer {
+    margin-bottom: 60px;
+    padding-top: 20px;
+}
+.wrap-comment-customer .item-customer-comment {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+    padding-left: 0;
+    border-bottom: 1px solid #e6e8ec;
+}
+.wrap-comment-customer .item-customer-comment .box-image {
+    width: 69px;
+    min-width: 69px;
+    height: 69px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 35px;
+}
+.wrap-comment-customer .item-customer-comment .box-image img {
+    width: 100%;
+    height: 100%;
+}
+.item-customer-comment .box-title-customercomment .name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.item-customer-comment .box-title-customercomment .name > p {
+    color: #141416;
+    margin: 0;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.item-customer-comment .box-title-customercomment .name .box-icon-rate {
+    display: flex;
+    align-items: center;
+}
+.item-customer-comment .box-title-customercomment .name .box-icon-rate i {
+    color: #ff0000;
+}
+.item-customer-comment .box-title-customercomment > p.content {
+    color: #353945;
+    font-size: 16px;
+    font-weight: 300;
+}
+.item-customer-comment .box-title-customercomment .date-comment {
+    color: #777e90;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+#modalEvalua .modal-dialog {
+    max-width: 600px;
+    width: 100%;
+}
+#modalEvalua .modal-dialog .modal-content {
+    background: #fff;
+    border: none;
+}
+#modalEvalua .modal-header {
+    background:#d00;
+}
+#modalEvalua .modal-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+#modalEvalua .modal-header button {
+    font-size: 16px;
+}
+#modalEvalua .modal-body {
+}
+#modalEvalua .modal-body .form-control {
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+#modalEvalua .modal-body .box-form-vote {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px;
+}
+#modalEvalua .modal-body .box-form-vote > p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #383838;
+    background: none;
+    border-bottom: 0px;
+}
+#modalEvalua .modal-body .starrating {
+    padding-top: 10px;
+}
+#modalEvalua .modal-body .starrating label {
+    font-size: 12px;
+    font-weight: 300;
+}
+.starrating > div > input {
+    display: none;
+}
+.starrating > div > label:before {
+    content: "\f005";
+    margin: 0.5px;
+    font-size: 24px;
+    font-family: "Font Awesome 5 Pro";
+    display: inline-block;
+}
+.starrating > div > label {
+    color: #000;
+    cursor: pointer;
+}
+.starrating > div > input:checked ~ label:before {
+    color: #ffca08;
+}
+.starrating > div > input:hover ~ label {
+    color: #ffca08;
+}
+#modalEvalua .modal-body .starrating div {
+}
+#modalEvalua .modal-body .starrating label {
+    flex: 0 0 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#modalEvalua .modal-body .form-review .btn-submit {
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+    background: #d00;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.modal-content .close {
+    opacity: 1;
+    text-shadow: none;
+    color: #fff;
+    text-align: right;
+}
+#modalEvalua .modal-header button {
+    font-size: 16px;
+    background: none;
+    border: none;
+}
+.starrating > input {
+    display: none;
+}
+.starrating > label {
+    color: #000;
+    cursor: pointer;
+}
+#modalEvalua .modal-body .starrating label {
+    font-size: 12px;
+    font-weight: 300;
+}
+.starrating > input:checked ~ label:before {
+    color: #d00;
+}
+
+.starrating > label:before {
+    content: "\F588";
+    margin: 0.5px;
+    font-size: 24px;
+    font-family: bootstrap-icons !important;
+    display: inline-block;
+}
+#modalEvalua .modal-body .starrating label:hover{
+    color: #d00;
+}
