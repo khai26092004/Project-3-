@@ -11,16 +11,22 @@ import org.hvk.hvk.vo.DangkyhocVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Validated
-@RestController
-@RequestMapping("/dangkyhoc")
+@Controller
+@RequestMapping("admin/dangkyhoc")
 public class DangkyhocController {
 
     @Autowired
     private DangkyhocService dangkyhocService;
+
+    @GetMapping
+    public String index() {
+        return "admin/dangkyhoc/index";
+    }
 
     @PostMapping
     public String save(@Valid @RequestBody DangkyhocVO vO) {
@@ -43,8 +49,5 @@ public class DangkyhocController {
         return dangkyhocService.getById(id);
     }
 
-    @GetMapping
-    public Page<DangkyhocDTO> query(@Valid DangkyhocQueryVO vO, Pageable pageable) {
-        return dangkyhocService.query(vO, pageable);
-    }
+
 }
