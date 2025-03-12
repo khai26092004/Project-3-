@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Quản lý lớp học</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                            <li class="breadcrumb-item active">Quản lý lớp học</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="p-4 border d-flex justify-content-between">
+                            <h3 class="card-title">Danh sách lớp học</h3>
+                            <a class="btn btn-success" href="/admin/lophoc/create">Thêm mới lớp học</a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Mã lớp học</th>
+                                    <th>Mã khóa học</th>
+                                    <th>Mã giảng viên</th>
+                                    <th>Ngày bắt đầu</th>
+                                    <th>Ngày kết thúc</th>
+                                    <th>Lịch học</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="lophoc, status : ${list_lophoc}">
+                                    <td th:text="${status.index + 1}"></td>
+                                    <td th:text="${lophoc.maLopHoc}"></td>
+                                    <td th:text="${lophoc.maKhoaHoc}"></td>
+                                    <td th:text="${lophoc.maGiangVien}"></td>
+                                    <td th:text="${#temporals.format(lophoc.ngayBatDau, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${#temporals.format(lophoc.ngayKetThuc, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${lophoc.lichHoc}"></td>
+                                    <td>
+                                        <a th:href="@{/admin/lophoc/show/{id}(id=${lophoc.maLopHoc})}" class="btn btn-primary">Chi tiết</a>
+                                        <a th:href="@{/admin/lophoc/edit/{id}(id=${lophoc.maLopHoc})}" class="btn btn-warning">Sửa</a>
+                                        <a th:href="@{/admin/lophoc/delete/{id}(id=${lophoc.maLopHoc})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                    </td>
+                                </tr>
+                                <tr th:if="${#lists.isEmpty(list_lophoc)}">
+                                    <td colspan="8" class="text-center">Không có dữ liệu để hiển thị!</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

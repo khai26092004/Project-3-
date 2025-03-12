@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Thêm mới đăng ký học</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/giangvien">Quản lý đăng ký học</a></li>
+                            <li class="breadcrumb-item active">Thêm mới đăng ký học</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thêm mới đăng ký học</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form th:action="@{/admin/giangvien}" method="post" th:object="${giangvien}">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="hoTen">Họ và tên giảng viên</label>
+                                    <input th:field="*{hoTen}" type="text" required class="form-control" id="hoTen" placeholder="Nhập họ và tên giảng viên">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input th:field="*{email}" type="email" required class="form-control" id="email" placeholder="Nhập email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soDienThoai">Số điện thoại</label>
+                                    <input th:field="*{soDienThoai}" type="number" required class="form-control" id="soDienThoai" placeholder="Nhập số điện thoại">
+                                </div>
+                                <div class="form-group">
+                                    <label for="chuyenMon">Chuyên môn</label>
+                                    <input th:field="*{chuyenMon}" type="text" required class="form-control" id="chuyenMon" placeholder="Nhập chuyên môn">
+                                </div>
+
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+            <!-- /.card -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- /.content-wrapper -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

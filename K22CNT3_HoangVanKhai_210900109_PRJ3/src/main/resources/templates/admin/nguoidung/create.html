@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Thêm mới người dùng</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/nguoidung">Quản lý người dùng</a></li>
+                            <li class="breadcrumb-item active">Thêm mới người dùng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thêm mới người dùng</h3>
+                        </div>
+                        <form th:action="@{/admin/nguoidung}" method="post" th:object="${nguoidung}">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="tendangnhap">Tên đăng nhập</label>
+                                    <input th:field="*{tendangnhap}" type="text" class="form-control" id="tendangnhap" placeholder="Nhập tên đăng nhập">
+                                    <span th:if="${#fields.hasErrors('tendangnhap')}" th:errors="*{tendangnhap}" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tennguoidung">Tên người dùng</label>
+                                    <input th:field="*{tennguoidung}" type="text" class="form-control" id="tennguoidung" placeholder="Nhập tên người dùng">
+                                    <span th:if="${#fields.hasErrors('tennguoidung')}" th:errors="*{tennguoidung}" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="matkhau">Mật khẩu</label>
+                                    <input th:field="*{matkhau}" type="password" class="form-control" id="matkhau" placeholder="Nhập mật khẩu">
+                                    <span th:if="${#fields.hasErrors('matkhau')}" th:errors="*{matkhau}" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Nhập email">
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vaitro">Vai trò</label>
+                                    <select th:field="*{vaitro}" id="vaitro" class="form-control">
+                                        <option th:value="'ADMIN'" th:text="'Admin'"></option>
+                                        <option th:value="'STUDENT'" th:text="'Student'"></option>
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('vaitro')}" th:errors="*{vaitro}" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

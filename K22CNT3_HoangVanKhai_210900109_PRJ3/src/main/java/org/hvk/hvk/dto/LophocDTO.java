@@ -2,9 +2,11 @@ package org.hvk.hvk.dto;
 
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 public class LophocDTO implements Serializable {
@@ -15,9 +17,12 @@ public class LophocDTO implements Serializable {
 
     private Integer maGiangVien;
 
-    private Date ngayBatDau;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngayBatDau;
 
-    private Date ngayKetThuc;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngayKetThuc;
+
 
     private String lichHoc;
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Sửa học viên</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/hocvien">Quản lý học viên</a></li>
+                            <li class="breadcrumb-item active">Sửa học viên</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Sửa học viên</h3>
+                        </div>
+                        <form th:action="@{/admin/hocvien/edit/{id}(id=${hocvien.maHocVien})}" method="post" th:object="${hocvien}">
+                            <div class="card-body">
+                                <input th:field="*{maHocVien}" type="hidden" class="form-control" id="maHocVien">
+                                <div class="form-group">
+                                    <label for="hoTen">Họ tên</label>
+                                    <input th:field="*{hoTen}" type="text" class="form-control" id="hoTen" placeholder="Nhập họ tên">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngaySinh">Ngày sinh</label>
+                                    <input th:field="*{ngaySinh}" type="date" class="form-control" id="ngaySinh">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Nhập email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soDienThoai">Số điện thoại</label>
+                                    <input th:field="*{soDienThoai}" type="text" class="form-control" id="soDienThoai" placeholder="Nhập số điện thoại">
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Địa chỉ</label>
+                                    <input th:field="*{diaChi}" type="text" class="form-control" id="diaChi" placeholder="Nhập địa chỉ">
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

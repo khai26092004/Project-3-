@@ -2,9 +2,11 @@ package org.hvk.hvk.dto;
 
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -19,7 +21,7 @@ public class KhoahocDTO implements Serializable {
     private Integer thoiLuong;
 
     private BigDecimal hocPhi;
-
-    private Date ngayTao;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngayTao;
 
 }

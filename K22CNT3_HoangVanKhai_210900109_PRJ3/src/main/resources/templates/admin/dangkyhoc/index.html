@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en">
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/fragments/head :: head}"></head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -33,7 +33,64 @@
 
     <!-- Main content -->
     <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="p-4 border d-flex justify-content-between">
+              <h3 class="card-title">Danh sách đăng ký học</h3>
+              <a class="btn btn-success no-after" href="/admin/dangkyhoc/create">Thêm mới đăng ký học</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Mã đăng ký</th>
+                  <th>Mã học viên</th>
+                  <th>Mã lớp học</th>
+                  <th>Ngày đăng ký</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="dangkyhoc, status : ${list_dangkyhoc}">
+                  
+                  <td th:text="${status.index + 1}"></td>
+                  <td th:text="${dangkyhoc.maDangKy}"></td>
+                  <td th:text="${dangkyhoc.maHocVien}"></td>
+                  <td th:text="${dangkyhoc.maLopHoc}"></td>
+                  <td th:text="${#temporals.format(dangkyhoc.ngayDangKy, 'yyyy-MM-dd HH:ss')}"></td>
+                  <td th:text="${dangkyhoc.trangThai.getDisplayName}"></td>
+                  <td>
+                    <a th:href="@{/admin/dangkyhoc/show/{id}(id=${dangkyhoc.maDangKy})}" class="btn btn-primary">Chi tiết</a>
+                    <a th:href="@{/admin/dangkyhoc/edit/{id}(id=${dangkyhoc.maDangKy})}" class="btn btn-warning">Sửa</a>
+                    <a th:href="@{/admin/dangkyhoc/delete/{id}(id=${dangkyhoc.maDangKy})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                  </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(list_dangkyhoc)}">
+                  <td colspan="7" class="text-center">Không có dữ liệu để hiển thị!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+              <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
 
+        <!-- /.card -->
     </section>
     <!-- /.content -->
   </div>

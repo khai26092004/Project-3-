@@ -2,14 +2,15 @@ package org.hvk.hvk.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "k22cnt3_hoangvankhai_prj3.thanhtoan")
+@Table(name = "thanhtoan")
 public class Thanhtoan implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,7 +30,8 @@ public class Thanhtoan implements Serializable {
     private BigDecimal soTien;
 
     @Column(name = "NgayThanhToan")
-    private Date ngayThanhToan = new Date();
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngayThanhToan;
 
     @Column(name = "TrangThai", nullable = false)
     private String trangThai;

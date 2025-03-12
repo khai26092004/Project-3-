@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav th:replace="~{admin/fragments/header :: header}"></nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Xem chi tiết thanh toán</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin/thanhtoan">Quản lý thanh toán</a></li>
+              <li class="breadcrumb-item active">Xem chi tiết thanh toán</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Chi tiết thanh toán</h3>
+            </div>
+            <div th:object="${thanhtoan}">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="maThanhToan">Mã thanh toán: </label>
+                  <p id="maThanhToan" th:text="*{maThanhToan}"></p>
+                </div>
+                <div class="form-group">
+                  <label for="maHocVien">Mã học viên: </label>
+                  <p id="maHocVien" th:text="*{maHocVien}"></p>
+                </div>
+                <div class="form-group">
+                  <label for="maKhoaHoc">Mã khóa học: </label>
+                  <p id="maKhoaHoc" th:text="*{maKhoaHoc}"></p>
+                </div>
+                <div class="form-group">
+                  <label for="soTien">Số tiền: </label>
+                  <p id="soTien" th:text="*{soTien}"></p>
+                </div>
+                <div class="form-group">
+                  <label for="ngayThanhToan">Ngày thanh toán: </label>
+                  <p id="ngayThanhToan" th:text="${#temporals.format(thanhtoan.ngayThanhToan, 'yyyy-MM-dd')}"></p>
+                </div>
+                <div class="form-group">
+                  <label for="trangThai">Trạng thái: </label>
+                  <p id="trangThai" th:text="*{trangThai}"></p>
+                </div>
+                <div class="form-group">
+                  <a th:href="@{/admin/thanhtoan/edit/{id}(id=${thanhtoan.maThanhToan})}" class="btn btn-warning">Sửa</a>
+                  <a th:href="@{/admin/thanhtoan/delete/{id}(id=${thanhtoan.maThanhToan})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

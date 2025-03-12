@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Xem chi tiết học viên</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/hocvien">Quản lý học viên</a></li>
+                            <li class="breadcrumb-item active">Xem chi tiết học viên</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chi tiết học viên</h3>
+                        </div>
+                        <div th:object="${hocvien}">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="maHocVien">Mã học viên: </label>
+                                    <p id="maHocVien" th:text="*{maHocVien}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hoTen">Họ tên: </label>
+                                    <p id="hoTen" th:text="*{hoTen}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngaySinh">Ngày sinh: </label>
+                                    <p id="ngaySinh" th:text="${#dates.format(hocvien.ngaySinh, 'yyyy-MM-dd')}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email: </label>
+                                    <p id="email" th:text="*{email}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="soDienThoai">Số điện thoại: </label>
+                                    <p id="soDienThoai" th:text="*{soDienThoai}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Địa chỉ: </label>
+                                    <p id="diaChi" th:text="*{diaChi}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngayTao">Ngày tạo: </label>
+                                    <p id="ngayTao" th:text="${#dates.format(hocvien.ngayTao, 'yyyy-MM-dd')}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <a th:href="@{/admin/hocvien/edit/{id}(id=${hocvien.maHocVien})}" class="btn btn-warning">Sửa</a>
+                                    <a th:href="@{/admin/hocvien/delete/{id}(id=${hocvien.maHocVien})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

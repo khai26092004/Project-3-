@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Xem chi tiết người dùng</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/nguoidung">Quản lý người dùng</a></li>
+                            <li class="breadcrumb-item active">Xem chi tiết người dùng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chi tiết người dùng</h3>
+                        </div>
+                        <div th:object="${nguoidung}">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="id">ID: </label>
+                                    <p id="id" th:text="*{id}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tendangnhap">Tên đăng nhập: </label>
+                                    <p id="tendangnhap" th:text="*{tendangnhap}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tennguoidung">Tên người dùng: </label>
+                                    <p id="tennguoidung" th:text="*{tennguoidung}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email: </label>
+                                    <p id="email" th:text="*{email}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vaitro">Vai trò: </label>
+                                    <p id="vaitro" th:text="*{vaitro}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <a th:href="@{/admin/nguoidung/edit/{id}(id=${nguoidung.id})}" class="btn btn-warning">Sửa</a>
+                                    <a th:href="@{/admin/nguoidung/delete/{id}(id=${nguoidung.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

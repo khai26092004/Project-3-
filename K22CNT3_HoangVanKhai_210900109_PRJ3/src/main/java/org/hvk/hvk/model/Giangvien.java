@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "k22cnt3_hoangvankhai_prj3.giangvien")
+@Table(name = "giangvien")
 public class Giangvien implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,5 +32,11 @@ public class Giangvien implements Serializable {
 
     @Column(name = "NgayTao")
     private Date ngayTao = new Date();
+
+    @PrePersist
+    protected void onCreate() {
+        this.ngayTao = new Date();
+    }
+
 
 }

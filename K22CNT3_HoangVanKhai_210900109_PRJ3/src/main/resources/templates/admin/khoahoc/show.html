@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Xem chi tiết khóa học</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/admin/khoahoc">Quản lý khóa học</a></li>
+                            <li class="breadcrumb-item active">Xem chi tiết khóa học</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chi tiết khóa học</h3>
+                        </div>
+                        <div th:object="${khoahoc}">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="maKhoaHoc">Mã khóa học: </label>
+                                    <p id="maKhoaHoc" th:text="*{maKhoaHoc}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenKhoaHoc">Tên khóa học: </label>
+                                    <p id="tenKhoaHoc" th:text="*{tenKhoaHoc}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="moTa">Mô tả: </label>
+                                    <p id="moTa" th:text="*{moTa}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="thoiLuong">Thời lượng: </label>
+                                    <p id="thoiLuong" th:text="*{thoiLuong}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hocPhi">Học phí: </label>
+                                    <p id="hocPhi" th:text="*{hocPhi}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngayTao">Ngày tạo: </label>
+                                    <p id="ngayTao" th:text="${#temporals.format(khoahoc.ngayTao, 'yyyy-MM-dd')}"></p>
+                                </div>
+                                <div class="form-group">
+                                    <a th:href="@{/admin/khoahoc/edit/{id}(id=${khoahoc.maKhoaHoc})}" class="btn btn-warning">Sửa</a>
+                                    <a th:href="@{/admin/khoahoc/delete/{id}(id=${khoahoc.maKhoaHoc})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

@@ -2,13 +2,15 @@ package org.hvk.hvk.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "k22cnt3_hoangvankhai_prj3.hocvien")
+@Table(name = "hocvien")
 public class Hocvien implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,7 +24,12 @@ public class Hocvien implements Serializable {
     private String hoTen;
 
     @Column(name = "NgaySinh")
-    private Date ngaySinh;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngaySinh;
+
+    @Column(name = "NgayTao")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate ngayTao = LocalDate.now();
 
     @Column(name = "Email")
     private String email;
@@ -32,8 +39,5 @@ public class Hocvien implements Serializable {
 
     @Column(name = "DiaChi")
     private String diaChi;
-
-    @Column(name = "NgayTao")
-    private Date ngayTao = new Date();
 
 }

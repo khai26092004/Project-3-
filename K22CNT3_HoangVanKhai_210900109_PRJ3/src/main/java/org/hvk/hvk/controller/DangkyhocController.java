@@ -1,19 +1,18 @@
 package org.hvk.hvk.controller;
 
-
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.hvk.hvk.dto.DangkyhocDTO;
+import org.hvk.hvk.model.Dangkyhoc;
 import org.hvk.hvk.service.DangkyhocService;
-import org.hvk.hvk.vo.DangkyhocQueryVO;
-import org.hvk.hvk.vo.DangkyhocUpdateVO;
-import org.hvk.hvk.vo.DangkyhocVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Validated
 @Controller
@@ -23,31 +22,54 @@ public class DangkyhocController {
     @Autowired
     private DangkyhocService dangkyhocService;
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping
-    public String index() {
+    public String viewDangKyHoc(Model model) {
+        List<Dangkyhoc> listDangKyHoc = dangkyhocService.getDangkyhocList();
+        model.addAttribute("list_dangkyhoc", listDangKyHoc);
         return "admin/dangkyhoc/index";
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @RequestMapping("/create")
+    public String create(Model model) {
+        Dangkyhoc dangkyhoc = new Dangkyhoc();
+        model.addAttribute("dangkyhoc", dangkyhoc);
+        return "admin/dangkyhoc/create";
+    }
+
     @PostMapping
-    public String save(@Valid @RequestBody DangkyhocVO vO) {
-        return dangkyhocService.save(vO).toString();
+    public String save(@Valid @ModelAttribute("dangkyhoc") DangkyhocDTO dangkyhocDTO) {
+        if(dangkyhocService.save(dangkyhocDTO)){
+            return "redirect:/admin/dangkyhoc";
+        }
+        return "redirect:/admin/dangkyhoc/create?error=true";
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @Valid @PathVariable("id") Integer id) {
+        Dangkyhoc dangkyhoc = dangkyhocService.findById(id);
+        model.addAttribute("dangkyhoc", dangkyhoc);
+        return "admin/dangkyhoc/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String update(@PathVariable("id") Integer id,
+                         @ModelAttribute("dangkyhoc") DangkyhocDTO dangkyhocDTO) {
+        dangkyhocService.update(id, dangkyhocDTO);
+        return "redirect:/admin/dangkyhoc";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@Valid @NotNull @PathVariable("id") Integer id) {
         dangkyhocService.delete(id);
+        return "redirect:/admin/dangkyhoc";
     }
 
-    @PutMapping("/{id}")
-    public void update(@Valid @NotNull @PathVariable("id") Integer id,
-                       @Valid @RequestBody DangkyhocUpdateVO vO) {
-        dangkyhocService.update(id, vO);
+    @GetMapping("/show/{id}")
+    public String show(Model model, @Valid @PathVariable("id") Integer id) {
+        Dangkyhoc dangkyhoc = dangkyhocService.findById(id);
+        model.addAttribute("dangkyhoc", dangkyhoc);
+        return "admin/dangkyhoc/show";
     }
-
-    @GetMapping("/{id}")
-    public DangkyhocDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return dangkyhocService.getById(id);
-    }
-
-
 }

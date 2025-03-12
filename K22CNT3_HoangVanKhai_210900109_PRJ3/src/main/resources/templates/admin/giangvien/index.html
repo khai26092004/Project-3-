@@ -1,0 +1,111 @@
+<!DOCTYPE html >
+<html th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav th:replace="~{admin/fragments/header :: header}"></nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Quản lý giảng viên</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item active">Quản lý giảng viên</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="p-4 border d-flex justify-content-between">
+              <h3 class="card-title">Danh sách giảng viên</h3>
+              <a class="btn btn-success no-after" href="/admin/giangvien/create">Thêm mới giảng viên</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Mã giảng viên</th>
+                  <th>Họ tên</th>
+                  <th>Email</th>
+                  <th>Số điện thoại</th>
+                  <th>Chuyên môn</th>
+                  <th>Thao tác</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="giangvien, status : ${list_giangvien}">
+                  
+                  <td th:text="${status.index + 1}"></td>
+                  <td th:text="${giangvien.maGiangVien}"></td>
+                  <td th:text="${giangvien.hoTen}"></td>
+                  <td th:text="${giangvien.Email}"></td>
+                  <td th:text="${giangvien.soDienThoai}"></td>
+                  <td th:text="${giangvien.chuyenMon}"></td>
+                  <td>
+                    <a th:href="@{/admin/giangvien/show/{id}(id=${giangvien.maGiangVien})}" class="btn btn-primary">Chi tiết</a>
+                    <a th:href="@{/admin/giangvien/edit/{id}(id=${giangvien.maGiangVien})}" class="btn btn-warning">Sửa</a>
+                    <a th:href="@{/admin/giangvien/delete/{id}(id=${giangvien.maGiangVien})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                  </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(list_giangvien)}">
+                  <td colspan="7" class="text-center">Không có dữ liệu để hiển thị!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+              <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <!-- /.content-wrapper -->
+  <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

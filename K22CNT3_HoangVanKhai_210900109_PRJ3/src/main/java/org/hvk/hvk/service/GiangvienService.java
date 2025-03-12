@@ -1,17 +1,19 @@
 package org.hvk.hvk.service;
 
+import jakarta.validation.Valid;
 import org.hvk.hvk.dto.GiangvienDTO;
+
 import org.hvk.hvk.model.Giangvien;
+
 import org.hvk.hvk.repository.GiangvienRepository;
-import org.hvk.hvk.vo.GiangvienQueryVO;
-import org.hvk.hvk.vo.GiangvienUpdateVO;
-import org.hvk.hvk.vo.GiangvienVO;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -20,41 +22,39 @@ public class GiangvienService {
     @Autowired
     private GiangvienRepository giangvienRepository;
 
-    public Integer save(GiangvienVO vO) {
-        Giangvien bean = new Giangvien();
-        BeanUtils.copyProperties(vO, bean);
-        bean = giangvienRepository.save(bean);
-        return bean.getMaGiangVien();
+    public Boolean save(@Valid @RequestBody GiangvienDTO dangkyhocDTO) {
+        try {
+            Giangvien bean = new Giangvien();
+            BeanUtils.copyProperties(dangkyhocDTO, bean);
+            bean = giangvienRepository.save(bean);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<Giangvien> getGiangVienList(){
+        return giangvienRepository.findAll();
     }
 
     public void delete(Integer id) {
         giangvienRepository.deleteById(id);
     }
 
-    public void update(Integer id, GiangvienUpdateVO vO) {
-        Giangvien bean = requireOne(id);
-        BeanUtils.copyProperties(vO, bean);
-        giangvienRepository.save(bean);
+    public Boolean update(Integer id, GiangvienDTO dangkyhocDTO) {
+        try {
+            Giangvien bean = findById(id);
+            BeanUtils.copyProperties(dangkyhocDTO, bean);
+            giangvienRepository.save(bean);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
     }
-
-    public GiangvienDTO getById(Integer id) {
-        Giangvien original = requireOne(id);
-        return toDTO(original);
-    }
-
-    public Page<GiangvienDTO> query(GiangvienQueryVO vO, Pageable pageable) {
-        Page<Giangvien> pageResult = giangvienRepository.findAll(pageable);
-        return pageResult.map(this::toDTO);
-    }
-
-    private GiangvienDTO toDTO(Giangvien original) {
-        GiangvienDTO bean = new GiangvienDTO();
-        BeanUtils.copyProperties(original, bean);
-        return bean;
-    }
-
-    private Giangvien requireOne(Integer id) {
-        return giangvienRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
+    public Giangvien findById(Integer id) {
+        return giangvienRepository.findById(id).get();
     }
 }
