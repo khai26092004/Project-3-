@@ -21,45 +21,45 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box p-5" style="background-color: white">
+<body class="hold-transition login-page" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
+<div class="login-box p-5" style="background: linear-gradient(135deg, #ffffff, #e0eafc); box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
     <div class="login-logo">
-        <a href="/"><b>VALORANT</b></a>
+        <a href="/" style="background: linear-gradient(135deg, #6a11cb, #2575fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">VALORANT</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Đăng ký tài khoản VALORANT</p>
+        <p class="login-box-msg" style="color: #2575fc;">Đăng ký tài khoản VALORANT</p>
 
         <!-- Hiển thị thông báo lỗi nếu có -->
-        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        <div th:if="${error}" class="alert" style="background: linear-gradient(135deg, #ff6b6b, #d32f2f); color: white;" th:text="${error}"></div>
         <!-- Hiển thị thông báo thành công nếu có -->
-        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+        <div th:if="${success}" class="alert" style="background: linear-gradient(135deg, #00ff99, #00b33c); color: white;" th:text="${success}"></div>
 
         <form th:action="@{/register}" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="tennguoidung" placeholder="Tên người dùng" required>
+                <input type="text" class="form-control" name="tennguoidung" placeholder="Tên người dùng" required style="border-radius: 5px;">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="tendangnhap" placeholder="Tên đăng nhập" required>
+                <input type="text" class="form-control" name="tendangnhap" placeholder="Tên đăng nhập" required style="border-radius: 5px;">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" placeholder="Email" required style="border-radius: 5px;">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu" required>
+                <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu" required style="border-radius: 5px;">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row mb-2">
                 <div class="col-xs-4 float-end">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
+                    <button type="submit" class="btn btn-block btn-flat text-white" style="background: linear-gradient(135deg, #00b33c, #00ff99);">Đăng ký</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
-        <a href="/login" class="text-center">Đã có tài khoản? Đăng nhập ngay</a>
+        <a href="/login" class="text-center" style="color: #2575fc;">Đã có tài khoản? Đăng nhập ngay</a>
     </div>
     <!-- /.login-box-body -->
 </div>
@@ -71,5 +71,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.3/icheck.min.js"></script>
+
+<!-- CSS bổ sung -->
+<style>
+    .btn:hover {
+        opacity: 0.9;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+    }
+</style>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!DOCTYPE html >
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/fragments/head :: head}"></head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -12,22 +12,22 @@
     <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div  class="content-wrapper">
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Dashboard</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.content-header -->
 
@@ -37,78 +37,93 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>150</h3>
-
-                                <p>New Orders</p>
+                        <div class="card text-white shadow" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+                            <div class="card-body">
+                                <h3 th:text="${totalHocVien}">150</h3>
+                                <p>Số học viên</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
+                            <div class="card-footer">
+                                <a href="/admin/hocvien" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                                <p>Bounce Rate</p>
+                        <div class="card text-white shadow" style="background: linear-gradient(135deg, #00ff99, #00b33c);">
+                            <div class="card-body">
+                                <h3 th:text="${totalKhoaHoc}">53</h3>
+                                <p>Số khóa học</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                            <div class="card-footer">
+                                <a href="/admin/khoahoc" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>User Registrations</p>
+                        <div class="card text-white shadow" style="background: linear-gradient(135deg, #ffeb3b, #ff9800);">
+                            <div class="card-body">
+                                <h3 th:text="${totalDangKyHoc}">44</h3>
+                                <p>Số đăng ký học</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                            <div class="card-footer">
+                                <a href="/admin/dangkyhoc" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>65</h3>
-
-                                <p>Unique Visitors</p>
+                        <div class="card text-white shadow" style="background: linear-gradient(135deg, #ff6b6b, #d32f2f);">
+                            <div class="card-body">
+                                <h3 th:text="${totalThanhToan}">65</h3>
+                                <p>Số thanh toán</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                            <div class="card-footer">
+                                <a href="/admin/thanhtoan" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
                 </div>
                 <!-- /.row -->
+
                 <!-- Main row -->
                 <div class="row">
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
+                                <h3 class="card-title">Thống kê gần đây</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Mã thanh toán</th>
+                                        <th>Học viên</th>
+                                        <th>Khóa học</th>
+                                        <th>Số tiền</th>
+                                        <th>Ngày thanh toán</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="thanhtoan : ${recentThanhToan}">
+                                        <td th:text="${thanhtoan.maThanhToan}"></td>
+                                        <td th:text="${thanhtoan.maHocVien}"></td>
+                                        <td th:text="${thanhtoan.maKhoaHoc}"></td>
+                                        <td th:text="${thanhtoan.soTien}"></td>
+                                        <td th:text="${thanhtoan.ngayThanhToan}"></td>
+                                        <td th:text="${thanhtoan.trangThai}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
-
     <!-- /.content-wrapper -->
+
     <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
 
     <!-- Control Sidebar -->

@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html th:lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/fragments/head :: head}"></head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -14,7 +14,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <div class="content-header" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -22,7 +22,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin" style="color: #fff;">Home</a></li>
               <li class="breadcrumb-item active">Quản lý giảng viên</li>
             </ol>
           </div><!-- /.col -->
@@ -36,15 +36,15 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <div class="p-4 border d-flex justify-content-between">
+            <div class="p-4 border d-flex justify-content-between" style="background: linear-gradient(135deg, #2575fc, #00c6ff); color: white;">
               <h3 class="card-title">Danh sách giảng viên</h3>
-              <a class="btn btn-success no-after" href="/admin/giangvien/create">Thêm mới giảng viên</a>
+              <a class="btn text-white" href="/admin/giangvien/create" style="background: linear-gradient(135deg, #00b33c, #00ff99);">Thêm mới giảng viên</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table class="table table-bordered">
                 <thead>
-                <tr>
+                <tr style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
                   <th style="width: 10px">#</th>
                   <th>Mã giảng viên</th>
                   <th>Họ tên</th>
@@ -56,7 +56,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="giangvien, status : ${list_giangvien}">
-                  
                   <td th:text="${status.index + 1}"></td>
                   <td th:text="${giangvien.maGiangVien}"></td>
                   <td th:text="${giangvien.hoTen}"></td>
@@ -64,9 +63,9 @@
                   <td th:text="${giangvien.soDienThoai}"></td>
                   <td th:text="${giangvien.chuyenMon}"></td>
                   <td>
-                    <a th:href="@{/admin/giangvien/show/{id}(id=${giangvien.maGiangVien})}" class="btn btn-primary">Chi tiết</a>
-                    <a th:href="@{/admin/giangvien/edit/{id}(id=${giangvien.maGiangVien})}" class="btn btn-warning">Sửa</a>
-                    <a th:href="@{/admin/giangvien/delete/{id}(id=${giangvien.maGiangVien})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                    <a th:href="@{/admin/giangvien/show/{id}(id=${giangvien.maGiangVien})}" class="btn text-white" style="background: linear-gradient(135deg, #0072ff, #00c6ff);">Chi tiết</a>
+                    <a th:href="@{/admin/giangvien/edit/{id}(id=${giangvien.maGiangVien})}" class="btn text-white" style="background: linear-gradient(135deg, #ff9800, #ffeb3b);">Sửa</a>
+                    <a th:href="@{/admin/giangvien/delete/{id}(id=${giangvien.maGiangVien})}" class="btn text-white" style="background: linear-gradient(135deg, #d32f2f, #ff6b6b);" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                   </td>
                 </tr>
                 <tr th:if="${#lists.isEmpty(list_giangvien)}">
@@ -89,8 +88,6 @@
           <!-- /.card -->
         </div>
       </div>
-
-        <!-- /.card -->
     </section>
     <!-- /.content -->
   </div>
@@ -107,5 +104,17 @@
 <!-- ./wrapper -->
 
 <div th:replace="~{admin/fragments/script :: script}"></div>
+
+<!-- CSS bổ sung -->
+<style>
+  .table tbody tr:hover {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    transition: all 0.3s ease;
+  }
+  .btn:hover {
+    opacity: 0.9;
+    transition: all 0.3s ease;
+  }
+</style>
 </body>
 </html>

@@ -114,21 +114,7 @@
                                 <nav id="navbar" class="navbar">
                                     <ul>
                                         <li><a href="/"><h2>Trang chủ</h2></a></li>
-                                        <li class="dropdown"><a href=""><h2>Về chúng tôi</h2></a>
-                                            <ul>
-                                                <li class="dropdown"><a href=""><h3>Giáo viên nước ngoài và những người bạn</h3></a></li>
-                                                <li class="dropdown"><a href=""><h3>Học sinh của chúng tôi</h3></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href=""><h2>Tin tức - Sự kiện</h2></a></li>
-                                        <li class="dropdown"><a href=""><h2>Tuyển sinh</h2></a>
-                                            <ul>
-                                                <li class="dropdown"><a href=""><h3>Tuyển sinh</h3></a></li>
-                                                <li class="dropdown"><a href=""><h3>Đăng kí học thử</h3></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href=""><h2>Học liệu</h2></a></li>
-                                        <li class="dropdown"><a href=""><h2>Liên hệ</h2></a></li>
+                                     
                                         <li th:if="${username == null}">
                                             <a th:href="@{/login}"><h2>Đăng nhập</h2></a>
                                         </li>
@@ -582,16 +568,16 @@ Liên kết giảng dạy tại các trường">
                     <div class="col-lg-12 text-left">
                         <h4>ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</h4>
                         <p class="text">Hãy để lại thông tin liên hệ, Valorant sẽ liên hệ và tư vấn cho bạn tận tình</p>
-                        <form action="http://localhost:8080/lien-he" method="post" role="form" id="create_form"
+                        <form action="http://localhost:8080/admin/hocvien/add" method="post" role="form" id="create_form"
                               class="php-email-form">
                             <input type="hidden" name="_token" value="95blvwaxWzbPKqywJE4b5NBnmV8DFpbQCA2LitFy">                                                        <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="text" required name="name" class="form-control" id="name" placeholder="Họ tên">
+                                <input type="text" required name="hoTen" class="form-control" id="hoTen" placeholder="Họ tên">
                                 <input type="hidden" required name="title" value="Đăng ký tư vấn miễn phí">
                             </div>
                             <div class="col-md-6 form-group mt-3 mt-md-0">
 
-                                <input type="text" required class="form-control" name="phone" id="phone"
+                                <input type="text" required class="form-control" name="soDienThoai" id="soDienThoai"
                                        placeholder="Số điện thoại">
                             </div>
                         </div>
@@ -599,14 +585,14 @@ Liên kết giảng dạy tại các trường">
                                 <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                             </div>
 
+                            <label for="ngaySinh">Ngày sinh</label>
+                            <input name="ngaySinh" type="date" class="form-control" id="ngaySinh">
 
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="content" rows="3" placeholder="Nội dung"></textarea>
+                                <label for="diaChi">Địa chỉ</label>
+                                <input name="diaChi" type="text" class="form-control" id="diaChi" placeholder="Nhập địa chỉ">
                             </div>
 
-                            <p class="text mt-3">
-                                Bằng việc đăng ký thông tin, bạn cho phép Trung Tâm liên lạc thông qua cuộc gọi, tin nhắn, email để tư vấn các chương trình, khóa học tiếng Anh và nghiên cứu thị trường
-                            </p>
 
                             <div class="text-center mt-3">
                                 <button class="btn btn-danger" type="submit">Gửi tin nhắn</button>

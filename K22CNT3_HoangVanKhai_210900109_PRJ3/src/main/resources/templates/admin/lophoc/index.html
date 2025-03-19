@@ -13,7 +13,7 @@
 
     <!-- Content Wrapper -->
     <div class="content-wrapper">
-        <div class="content-header">
+        <div class="content-header" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/admin" style="color: #fff;">Home</a></li>
                             <li class="breadcrumb-item active">Quản lý lớp học</li>
                         </ol>
                     </div>
@@ -34,14 +34,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="p-4 border d-flex justify-content-between">
+                        <div class="p-4 border d-flex justify-content-between" style="background: linear-gradient(135deg, #2575fc, #00c6ff); color: white;">
                             <h3 class="card-title">Danh sách lớp học</h3>
-                            <a class="btn btn-success" href="/admin/lophoc/create">Thêm mới lớp học</a>
+                            <a class="btn text-white" href="/admin/lophoc/create" style="background: linear-gradient(135deg, #00b33c, #00ff99);">Thêm mới lớp học</a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>
-                                <tr>
+                                <tr style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
                                     <th style="width: 10px">#</th>
                                     <th>Mã lớp học</th>
                                     <th>Mã khóa học</th>
@@ -62,9 +62,9 @@
                                     <td th:text="${#temporals.format(lophoc.ngayKetThuc, 'yyyy-MM-dd')}"></td>
                                     <td th:text="${lophoc.lichHoc}"></td>
                                     <td>
-                                        <a th:href="@{/admin/lophoc/show/{id}(id=${lophoc.maLopHoc})}" class="btn btn-primary">Chi tiết</a>
-                                        <a th:href="@{/admin/lophoc/edit/{id}(id=${lophoc.maLopHoc})}" class="btn btn-warning">Sửa</a>
-                                        <a th:href="@{/admin/lophoc/delete/{id}(id=${lophoc.maLopHoc})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                        <a th:href="@{/admin/lophoc/show/{id}(id=${lophoc.maLopHoc})}" class="btn text-white" style="background: linear-gradient(135deg, #0072ff, #00c6ff);">Chi tiết</a>
+                                        <a th:href="@{/admin/lophoc/edit/{id}(id=${lophoc.maLopHoc})}" class="btn text-white" style="background: linear-gradient(135deg, #ff9800, #ffeb3b);">Sửa</a>
+                                        <a th:href="@{/admin/lophoc/delete/{id}(id=${lophoc.maLopHoc})}" class="btn text-white" style="background: linear-gradient(135deg, #d32f2f, #ff6b6b);" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(list_lophoc)}">
@@ -84,5 +84,17 @@
 </div>
 
 <div th:replace="~{admin/fragments/script :: script}"></div>
+
+<!-- CSS bổ sung -->
+<style>
+    .table tbody tr:hover {
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        opacity: 0.9;
+        transition: all 0.3s ease;
+    }
+</style>
 </body>
 </html>

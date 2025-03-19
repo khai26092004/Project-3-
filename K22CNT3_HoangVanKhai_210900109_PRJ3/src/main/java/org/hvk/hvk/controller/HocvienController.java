@@ -46,6 +46,14 @@ public class HocvienController {
         return "redirect:/admin/hocvien/create?error=true";
     }
 
+    @PostMapping("/add")
+    public String saveHv(@Valid @ModelAttribute("hocvien") HocvienDTO hocvienDTO) {
+        if (hocvienService.save(hocvienDTO)) {
+            return "redirect:/?dang ky thanh cong";
+        }
+        return "redirect:/?taosai";
+    }
+
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/edit/{id}")
     public String edit(Model model, @Valid @PathVariable("id") Integer id) {
